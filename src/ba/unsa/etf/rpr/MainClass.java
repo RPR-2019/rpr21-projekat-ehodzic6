@@ -1,3 +1,5 @@
+package ba.unsa.etf.rpr;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +12,7 @@ public class MainClass extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
+        stage.setResizable(false);
         stage.show();
     }
 
