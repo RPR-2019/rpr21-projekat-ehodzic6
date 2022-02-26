@@ -59,10 +59,12 @@ public class LoginController implements Initializable {
                 Node node= (Node) actionEvent.getSource();
                 Stage stage1= (Stage) node.getScene().getWindow();
                 stage1.close();
+                rekordiDAO.zatvoriKon();
                 Stage stage=new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/napraviRacun.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainScreen.fxml"));
                 stage.setTitle("Kriminalni rekordi");
-                stage.setScene(new Scene(root, 774, 553));
+                stage.setScene(new Scene(root, 1000, 800));
+                stage.setResizable(false);
                 stage.show();
             }
 

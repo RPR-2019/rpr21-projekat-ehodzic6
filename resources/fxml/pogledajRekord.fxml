@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.PogledajRekordController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <AnchorPane prefHeight="813.0" prefWidth="561.0" BorderPane.alignment="CENTER">
+         <children>
+            <Hyperlink layoutX="166.0" layoutY="728.0" onAction="#actionNazad" text="Nazad" textFill="#c90f0f">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Hyperlink>
+            <Button layoutX="66.0" layoutY="504.0" mnemonicParsing="false" onAction="#actionDodajDjelo" prefHeight="44.0" prefWidth="277.0" text="Dodaj kriminalno djelo">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="566.0" mnemonicParsing="false" onAction="#actionPogledajNalaz" prefHeight="44.0" prefWidth="277.0" text="Pogledaj nalaz psihijatra">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="629.0" mnemonicParsing="false" onAction="#actionDodajNalaz" prefHeight="44.0" prefWidth="277.0" text="Dodaj nalaz psihijatra">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="labelaIme" layoutX="66.0" layoutY="51.0" text="Ime:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelaPrezime" layoutX="66.0" layoutY="95.0" text="Prezime:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelaJMBG" layoutX="66.0" layoutY="145.0" text="JMBG:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelaDatum" layoutX="66.0" layoutY="186.0" text="Datum rođenja:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelaSpol" layoutX="66.0" layoutY="229.0" text="Spol:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <GridPane prefHeight="813.0" prefWidth="426.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="726.0" minHeight="10.0" prefHeight="726.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="391.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="391.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ListView prefHeight="200.0" prefWidth="200.0">
+               <GridPane.margin>
+                  <Insets right="30.0" />
+               </GridPane.margin>
+            </ListView>
+            <ProgressBar fx:id="progressStepen" prefHeight="20.0" prefWidth="431.0" progress="0.0" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="30.0" />
+               </GridPane.margin>
+            </ProgressBar>
+            <Label text="Prosječni stepen prijetnje:" GridPane.rowIndex="1">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </right>
+</BorderPane>
