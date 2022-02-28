@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class RekordiDAO {
     public PreparedStatement pretraziLogin,ubaciLogin,ubaciOsobu,traziOsobe,traziOsobu,traziOsobuSaImenom,dodajOstecenuOsobu,dajOsteceneOsobe,dodajDjelo
-            ,obrisiOstecene,nadjiDjela,prosjecniStepen,dodajPravnoLice,dajPravnaLica,nadjiDjelo;
+            ,obrisiOstecene,nadjiDjela,prosjecniStepen,dodajPravnoLice,dajPravnaLica,nadjiDjelo,dodajNalaz,dajNalaz;
     private Connection conn;
 
     public RekordiDAO() {
@@ -29,6 +29,8 @@ public class RekordiDAO {
             dodajPravnoLice=conn.prepareStatement("INSERT INTO ostecenaPravnaLica VALUES(?,?)");
             dajPravnaLica=conn.prepareStatement("SELECT * FROM ostecenaPravnaLica WHERE kodDjela=?");
             nadjiDjelo=conn.prepareStatement("SELECT * FROM rekordi WHERE kod=?");
+            dodajNalaz=conn.prepareStatement("INSERT INTO nalazi VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            dajNalaz=conn.prepareStatement("SELECT * FROM nalazi WHERE jmbg=?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,5 +119,13 @@ public class RekordiDAO {
 
     public PreparedStatement getNadjiDjelo() {
         return nadjiDjelo;
+    }
+
+    public PreparedStatement getDodajNalaz() {
+        return dodajNalaz;
+    }
+
+    public PreparedStatement getDajNalaz() {
+        return dajNalaz;
     }
 }

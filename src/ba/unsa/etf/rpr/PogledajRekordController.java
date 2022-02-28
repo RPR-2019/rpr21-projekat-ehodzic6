@@ -92,10 +92,31 @@ public class PogledajRekordController implements Initializable {
     }
 
 
-    public void actionPogledajNalaz(ActionEvent actionEvent) {
+    public void actionPogledajNalaz(ActionEvent actionEvent) throws IOException, SQLException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/pogledajNalaz.fxml"));
+        Parent root=loader.load();
+        PogledajNalazController pogledajNalazController=loader.getController();
+        pogledajNalazController.setJmb(jmbg);
+        pogledajNalazController.setImePrezime(labelaIme.getText()+" "+labelaPrezime.getText());
+        Stage stage=new Stage();
+        stage.setScene(new Scene(root,774,553));
+        stage.setTitle("Nalaz"+labelaIme.getText()+" "+labelaPrezime.getText());
+        rekordiDAO.zatvoriKon();
+        stage.show();
+
     }
 
-    public void actionDodajNalaz(ActionEvent actionEvent) {
+    public void actionDodajNalaz(ActionEvent actionEvent) throws IOException, SQLException {
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/dodajNalaz.fxml"));
+        Parent root=fxmlLoader.load();
+        DodajNalazController dodajNalazController=fxmlLoader.getController();
+        dodajNalazController.setJmbg(jmbg);
+        Stage stage=new Stage();
+        stage.setTitle("Dodaj nalaz  "+jmbg);
+        stage.setScene(new Scene(root,774,553));
+        stage.setResizable(false);
+        rekordiDAO.zatvoriKon();
+        stage.show();
     }
 
     public void setProgressStepen(ProgressBar progressStepen) {
