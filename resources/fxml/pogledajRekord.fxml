@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -7,6 +8,9 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.PogledajRekordController">
+   <stylesheets>
+      <URL value="@/css/izgled.css" />
+   </stylesheets>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
@@ -36,12 +40,14 @@
                   <Font size="22.0" />
                </font>
             </Hyperlink>
+            <TextField fx:id="stepenPrati" layoutX="96.0" layoutY="578.0" prefHeight="23.0" prefWidth="0.0" />
+            <TextField fx:id="jmbgPrati" layoutX="104.0" layoutY="514.0" prefHeight="23.0" prefWidth="0.0" />
             <Button layoutX="66.0" layoutY="504.0" mnemonicParsing="false" onAction="#actionDodajDjelo" prefHeight="44.0" prefWidth="277.0" text="Dodaj kriminalno djelo">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="66.0" layoutY="566.0" mnemonicParsing="false" onAction="#actionPogledajNalaz" prefHeight="44.0" prefWidth="277.0" text="Pogledaj nalaz psihijatra">
+            <Button layoutX="66.0" layoutY="567.0" mnemonicParsing="false" onAction="#actionPogledajNalaz" prefHeight="44.0" prefWidth="277.0" text="Pogledaj nalaz psihijatra">
                <font>
                   <Font size="18.0" />
                </font>
@@ -91,7 +97,7 @@
             <RowConstraints maxHeight="391.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ListView prefHeight="200.0" prefWidth="200.0">
+            <ListView fx:id="djela" onMouseClicked="#actionPristupi" prefHeight="200.0" prefWidth="200.0">
                <GridPane.margin>
                   <Insets right="30.0" />
                </GridPane.margin>

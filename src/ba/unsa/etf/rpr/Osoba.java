@@ -10,11 +10,23 @@ public class Osoba {
     public String toString() {
         return ime+" "+prezime;
     }
+    public String toString2(){
+        return datumRodjenja.getDayOfMonth()+"."+datumRodjenja.getMonthValue()+"."+datumRodjenja.getYear()+".";
+    }
 
     enum Spol{
-        muško,
-        žensko,
-        nedef;
+        muško("Muško"),
+        žensko("Žensko"),
+        nedef("N");
+
+        public String string;
+
+        Spol(String string){
+            this.string=string;
+        }
+        public String toString(){
+            return string;
+        }
 
     }
     String ime;

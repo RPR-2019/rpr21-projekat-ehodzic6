@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class RekordiDAO {
-    public PreparedStatement pretraziLogin,ubaciLogin,ubaciOsobu,traziOsobe,traziOsobu;
+    public PreparedStatement pretraziLogin,ubaciLogin,ubaciOsobu,traziOsobe,traziOsobu,traziOsobuSaImenom,dodajOstecenuOsobu,dajOsteceneOsobe,dodajDjelo
+            ,obrisiOstecene,nadjiDjela,prosjecniStepen,dodajPravnoLice,dajPravnaLica,nadjiDjelo;
     private Connection conn;
 
     public RekordiDAO() {
@@ -18,6 +19,17 @@ public class RekordiDAO {
             ubaciOsobu=conn.prepareStatement("INSERT INTO osobe VALUES (?,?,?,?,?)");
             traziOsobe= conn.prepareStatement("SELECT * FROM osobe");
             traziOsobu=conn.prepareStatement("SELECT * FROM osobe WHERE jmbg=?");
+            traziOsobuSaImenom=conn.prepareStatement("SELECT * FROM osobe WHERE ime=? AND prezime=?");
+            dodajOstecenuOsobu=conn.prepareStatement("INSERT INTO osteceneOsobe VALUES(?,?,?,?,?,?)");
+            dajOsteceneOsobe=conn.prepareStatement("SELECT * FROM osteceneOsobe WHERE kodDjela=?");
+            dodajDjelo=conn.prepareStatement("INSERT INTO rekordi VALUES (?,?,?,?,?,?,?,?)");
+            obrisiOstecene=conn.prepareStatement("DELETE FROM osteceneOsobe WHERE kodDjela=?");
+            nadjiDjela=conn.prepareStatement("SELECT * FROM rekordi WHERE jmbg=?");
+            prosjecniStepen=conn.prepareStatement("SELECT AVG(stepen) FROM rekordi WHERE jmbg=?");
+            dodajPravnoLice=conn.prepareStatement("INSERT INTO ostecenaPravnaLica VALUES(?,?)");
+            dajPravnaLica=conn.prepareStatement("SELECT * FROM ostecenaPravnaLica WHERE kodDjela=?");
+            nadjiDjelo=conn.prepareStatement("SELECT * FROM rekordi WHERE kod=?");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -38,6 +50,8 @@ public class RekordiDAO {
     public PreparedStatement getTraziOsobe() {
         return traziOsobe;
     }
+
+    public PreparedStatement getTraziOsobuSaImenom(){return traziOsobuSaImenom;}
 
     public ArrayList<Osoba> dajOsobe() throws SQLException {
         ArrayList<Osoba> osobe=new ArrayList<>();
@@ -67,5 +81,41 @@ public class RekordiDAO {
 
     public PreparedStatement getTraziOsobu() {
         return traziOsobu;
+    }
+
+    public PreparedStatement getDodajOstecenuOsobu() {
+        return dodajOstecenuOsobu;
+    }
+
+    public PreparedStatement getDajOsteceneOsobe() {
+        return dajOsteceneOsobe;
+    }
+
+    public PreparedStatement getDodajDjelo() {
+        return dodajDjelo;
+    }
+
+    public PreparedStatement getObrisiOstecene() {
+        return obrisiOstecene;
+    }
+
+    public PreparedStatement getNadjiDjela() {
+        return nadjiDjela;
+    }
+
+    public PreparedStatement getProsjecniStepen() {
+        return prosjecniStepen;
+    }
+
+    public PreparedStatement getDodajPravnoLice() {
+        return dodajPravnoLice;
+    }
+
+    public PreparedStatement getDajPravnaLica() {
+        return dajPravnaLica;
+    }
+
+    public PreparedStatement getNadjiDjelo() {
+        return nadjiDjelo;
     }
 }

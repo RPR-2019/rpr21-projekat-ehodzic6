@@ -66,9 +66,14 @@ public class MainScreenController implements Initializable {
         }
         else{
             osoba=(Osoba) listaOsoba.getSelectionModel().getSelectedItem();
+            rekordiDAO.getTraziOsobu().setString(1,((Osoba) listaOsoba.getSelectionModel().getSelectedItem()).getJmbg());
+            ResultSet rs=rekordiDAO.getTraziOsobu().executeQuery();
+            if(rs.getString(4).equals("Muško")){
+                osoba.setSpol(Osoba.Spol.muško);
+            }
+            else{osoba.setSpol(Osoba.Spol.žensko);}
             Stage stage=new Stage();
             Stage stage1=(Stage) listaOsoba.getScene().getWindow();
-            System.out.println(osoba.toString()+" "+osoba.getDatumRodjenja().toString()+" "+osoba.getJmbg());
             rekordiDAO.zatvoriKon();
             stage1.close();
             FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/pogledajRekord.fxml"));
@@ -76,9 +81,12 @@ public class MainScreenController implements Initializable {
             stage.setTitle(osoba.toString());
             PogledajRekordController pogledajRekordController=fxmlLoader.getController();
             pogledajRekordController.setOsoba(osoba);
+            pogledajRekordController.setStringJmbg(osoba.jmbg);
+            pogledajRekordController.setJmbgPrati(osoba.jmbg);
             stage.setScene(new Scene(root,1000,800));
             stage.setResizable(false);
             stage.show();
+
 
 
         }
