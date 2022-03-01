@@ -48,10 +48,10 @@ public class LoginController implements Initializable {
 
     public void actionPrijava(ActionEvent actionEvent) throws IOException {
         try {
-            PreparedStatement pretraga=rekordiDAO.getPretraziLogin();
-            pretraga.setString(1,korisnickoIme.getText());
-            pretraga.setString(2,lozinka.getText());
-            ResultSet resultSet=pretraga.executeQuery();
+
+            rekordiDAO.getPretraziLogin().setString(1,korisnickoIme.getText());
+            rekordiDAO.getPretraziLogin().setString(2,lozinka.getText());
+            ResultSet resultSet=rekordiDAO.getPretraziLogin().executeQuery();
             if(korisnickoIme.getText().isBlank() || lozinka.getText().isBlank()){
                 Alert alert=new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Greška!");
