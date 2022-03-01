@@ -12,8 +12,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<?import java.net.URL?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.NapraviRacunController">
-  <columnConstraints>
+    <stylesheets>
+        <URL value="@/css/izgled.css"/>
+    </stylesheets>
+    <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="355.0" minWidth="10.0" prefWidth="110.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="490.0" minWidth="10.0" prefWidth="490.0" />
   </columnConstraints>

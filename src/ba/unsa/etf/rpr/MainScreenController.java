@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -20,6 +22,9 @@ import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
     public ListView listaOsoba;
+    public ImageView sar;
+    public ImageView bih;
+    public ImageView ks;
     private RekordiDAO rekordiDAO=new RekordiDAO();
     private Osoba osoba=new Osoba();
 
@@ -57,12 +62,15 @@ public class MainScreenController implements Initializable {
             e.printStackTrace();
         }
 
+          sar.setImage(new Image(getClass().getResourceAsStream("/img/grb.png")));
+           ks.setImage(new Image(getClass().getResourceAsStream("/img/ks.png")));
+           bih.setImage(new Image(getClass().getResourceAsStream("/img/grbBih.png")));
+
     }
 
     public void onMouseLista(MouseEvent mouseEvent) throws IOException, SQLException {
         if(listaOsoba.getSelectionModel().getSelectedItem()==null){
-            Alert alert=new Alert(Alert.AlertType.WARNING);
-            alert.showAndWait();
+
         }
         else{
             osoba=(Osoba) listaOsoba.getSelectionModel().getSelectedItem();
@@ -94,5 +102,27 @@ public class MainScreenController implements Initializable {
 
     public Osoba getOsoba(){
         return osoba;
+    }
+
+    public void exit(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+    public void logOut(ActionEvent actionEvent) throws IOException {
+        Stage stage=(Stage) sar.getScene().getWindow();
+        stage.close();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        stage.setTitle("Prijava");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public void about(ActionEvent actionEvent) throws IOException {
+        Stage stage=new Stage();
+        Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
+        stage.setScene(new Scene(root,600,400));
+        stage.setResizable(false);
+        stage.show();
     }
 }

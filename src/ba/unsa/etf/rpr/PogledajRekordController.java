@@ -5,14 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +32,7 @@ public class PogledajRekordController implements Initializable {
     public ListView djela;
     public TextField jmbgPrati;
     public TextField stepenPrati;
+    public ImageView slika;
 
     public void setStringJmbg(String jmbg){
         this.jmbg=jmbg;
@@ -93,31 +94,56 @@ public class PogledajRekordController implements Initializable {
 
 
     public void actionPogledajNalaz(ActionEvent actionEvent) throws IOException, SQLException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/pogledajNalaz.fxml"));
-        Parent root=loader.load();
-        PogledajNalazController pogledajNalazController=loader.getController();
-        pogledajNalazController.setJmb(jmbg);
-        pogledajNalazController.setImePrezime(labelaIme.getText()+" "+labelaPrezime.getText());
-        Stage stage=new Stage();
-        stage.setScene(new Scene(root,774,553));
-        stage.setTitle("Nalaz"+labelaIme.getText()+" "+labelaPrezime.getText());
-        rekordiDAO.zatvoriKon();
-        stage.show();
-
+        RekordiDAO dao=new RekordiDAO();
+        dao.dajNalaz.setString(1,jmbg);
+        ResultSet resultSet=dao.dajNalaz.executeQuery();
+        if(!resultSet.next()){
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Nalaz ne postoji");
+            alert.setContentText("Nalaz možete kreirati.");
+            alert.setTitle("Greška");
+            alert.showAndWait();
+            dao.zatvoriKon();
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pogledajNalaz.fxml"));
+            Parent root = loader.load();
+            PogledajNalazController pogledajNalazController = loader.getController();
+            pogledajNalazController.setJmb(jmbg);
+            pogledajNalazController.setImePrezime(labelaIme.getText() + " " + labelaPrezime.getText());
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 774, 553));
+            stage.setTitle("Nalaz " + labelaIme.getText() + " " + labelaPrezime.getText());
+            rekordiDAO.zatvoriKon();
+            stage.show();
+        }
     }
 
     public void actionDodajNalaz(ActionEvent actionEvent) throws IOException, SQLException {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/dodajNalaz.fxml"));
-        Parent root=fxmlLoader.load();
-        DodajNalazController dodajNalazController=fxmlLoader.getController();
-        dodajNalazController.setJmbg(jmbg);
-        Stage stage=new Stage();
-        stage.setTitle("Dodaj nalaz  "+jmbg);
-        stage.setScene(new Scene(root,774,553));
-        stage.setResizable(false);
-        rekordiDAO.zatvoriKon();
-        stage.show();
-    }
+       RekordiDAO dao=new RekordiDAO();
+        dao.dajNalaz.setString(1,jmbg);
+        ResultSet resultSet=dao.dajNalaz.executeQuery();
+        if(resultSet.next()){
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Nalaz već postoji");
+            alert.setContentText("Nalaz možete pogledati.");
+            alert.setTitle("Greška");
+            alert.showAndWait();
+        }
+        else {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/dodajNalaz.fxml"));
+            Parent root = fxmlLoader.load();
+            DodajNalazController dodajNalazController = fxmlLoader.getController();
+            dodajNalazController.setJmbg(jmbg);
+            Stage stage = new Stage();
+            stage.setTitle("Dodaj nalaz  " + jmbg);
+            stage.setScene(new Scene(root, 774, 553));
+            stage.setResizable(false);
+            rekordiDAO.zatvoriKon();
+
+            stage.show();
+        }
+    dao.zatvoriKon();}
 
     public void setProgressStepen(ProgressBar progressStepen) {
         this.progressStepen = progressStepen;
@@ -153,6 +179,7 @@ public class PogledajRekordController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        slika.setImage(new Image(getClass().getResourceAsStream("/img/slika.jpg")));
 
         jmbgPrati.textProperty().addListener((obs,stara,nova)-> {
             try {
@@ -213,17 +240,43 @@ public class PogledajRekordController implements Initializable {
     }
 
     public void actionPristupi(MouseEvent mouseEvent) throws IOException {
-        KriminalnoDjelo kriminalnoDjelo= (KriminalnoDjelo) djela.getSelectionModel().getSelectedItem();
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/pogledajDjelo.fxml"));
-        Parent root=loader.load();
-        PogledajDjeloController pogledajDjeloController=loader.getController();
-        pogledajDjeloController.setKodString(kriminalnoDjelo.getJedinstveniKod());
-        pogledajDjeloController.setPratiKod(kriminalnoDjelo.getJedinstveniKod());
-        Stage stage=new Stage();
-        stage.setScene(new Scene(root,1000,800));
-        stage.setTitle("Djelo: "+kriminalnoDjelo.getJedinstveniKod());
+        if (!(djela.getSelectionModel().getSelectedItem() == null)) {
+            KriminalnoDjelo kriminalnoDjelo = (KriminalnoDjelo) djela.getSelectionModel().getSelectedItem();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pogledajDjelo.fxml"));
+            Parent root = null;
+
+            root = loader.load();
+
+            PogledajDjeloController pogledajDjeloController = loader.getController();
+            pogledajDjeloController.setKodString(kriminalnoDjelo.getJedinstveniKod());
+            pogledajDjeloController.setPratiKod(kriminalnoDjelo.getJedinstveniKod());
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 1000, 800));
+            stage.setTitle("Djelo: " + kriminalnoDjelo.getJedinstveniKod());
+            stage.show();
+        }
+
+    }
+
+    public void exit(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+    public void logOut(ActionEvent actionEvent) throws IOException {
+        Stage stage=(Stage) djela.getScene().getWindow();
+        stage.close();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        stage.setTitle("Prijava");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.setResizable(false);
         stage.show();
+    }
 
-
+    public void about(ActionEvent actionEvent) throws IOException {
+        Stage stage=new Stage();
+        Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
+        stage.setScene(new Scene(root,600,400));
+        stage.setResizable(false);
+        stage.show();
     }
 }

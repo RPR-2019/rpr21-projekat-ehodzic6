@@ -7,7 +7,8 @@ import java.util.Date;
 
 public class RekordiDAO {
     public PreparedStatement pretraziLogin,ubaciLogin,ubaciOsobu,traziOsobe,traziOsobu,traziOsobuSaImenom,dodajOstecenuOsobu,dajOsteceneOsobe,dodajDjelo
-            ,obrisiOstecene,nadjiDjela,prosjecniStepen,dodajPravnoLice,dajPravnaLica,nadjiDjelo,dodajNalaz,dajNalaz;
+            ,obrisiOstecene,nadjiDjela,prosjecniStepen,dodajPravnoLice,dajPravnaLica,nadjiDjelo,dodajNalaz,dajNalaz,provjeriIme
+            ,provjeriJmbg,dajOstecenuOsobu,dajPravno;
     private Connection conn;
 
     public RekordiDAO() {
@@ -31,6 +32,10 @@ public class RekordiDAO {
             nadjiDjelo=conn.prepareStatement("SELECT * FROM rekordi WHERE kod=?");
             dodajNalaz=conn.prepareStatement("INSERT INTO nalazi VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             dajNalaz=conn.prepareStatement("SELECT * FROM nalazi WHERE jmbg=?");
+            provjeriIme=conn.prepareStatement("SELECT * FROM login WHERE username=?");
+            provjeriJmbg=conn.prepareStatement("SELECT  * FROM osobe where jmbg=?");
+            dajOstecenuOsobu=conn.prepareStatement("SELECT * FROM osteceneOsobe WHERE JMBG=?");
+            dajPravno=conn.prepareStatement("SELECT * FROM ostecenaPravnaLica WHERE naziv=?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,5 +132,21 @@ public class RekordiDAO {
 
     public PreparedStatement getDajNalaz() {
         return dajNalaz;
+    }
+
+    public PreparedStatement getProvjeriIme() {
+        return provjeriIme;
+    }
+
+    public PreparedStatement getProvjeriJmbg() {
+        return provjeriJmbg;
+    }
+
+    public PreparedStatement getDajOstecenuOsobu() {
+        return dajOstecenuOsobu;
+    }
+
+    public PreparedStatement getDajPravno() {
+        return dajPravno;
     }
 }

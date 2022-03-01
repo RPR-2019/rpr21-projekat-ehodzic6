@@ -11,7 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class NapraviRacunController implements Initializable {
@@ -19,10 +21,11 @@ public class NapraviRacunController implements Initializable {
     public PasswordField lozinka;
     public TextField korisnickoIme;
     private RekordiDAO rekordiDAO=new RekordiDAO();
-    public void actionPovratak(ActionEvent actionEvent) {
+    public void actionPovratak(ActionEvent actionEvent) throws SQLException {
         Node node=(Node) actionEvent.getSource();
         Stage stage=(Stage) node.getScene().getWindow();
         stage.close();
+        rekordiDAO.zatvoriKon();
     }
 
 
@@ -34,7 +37,19 @@ public class NapraviRacunController implements Initializable {
     }
 
     public void actionPrijava(ActionEvent actionEvent) throws SQLException {
-        if(!korisnickoIme.getText().isBlank() && !lozinka.getText().isBlank()) {
+        rekordiDAO.provjeriIme.setString(1,korisnickoIme.getText());
+        ResultSet rs1=rekordiDAO.provjeriIme.executeQuery();
+        if(rs1.next()){
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Greška!");
+            alert.setHeaderText("Korisničko ime je zauzeto!");
+            Random random=new Random();
+            alert.setContentText("Pokušajte sa: "+korisnickoIme.getText()+random.nextInt()/1000);
+            alert.showAndWait();
+            korisnickoIme.setText("");
+            lozinka.setText("");
+        }
+        else if(!korisnickoIme.getText().isBlank() && !lozinka.getText().isBlank()) {
             rekordiDAO.getUbaciLogin().setString(1, korisnickoIme.getText());
             rekordiDAO.getUbaciLogin().setString(2, lozinka.getText());
             rekordiDAO.getUbaciLogin().execute();
@@ -44,13 +59,36 @@ public class NapraviRacunController implements Initializable {
             alert.showAndWait();
             Stage stage=(Stage) slika.getScene().getWindow();
             stage.close();
+            rekordiDAO.zatvoriKon();
         }
         else{
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Greška!");
             alert.setHeaderText("Polja ne smiju biti prazna!");
             alert.setContentText("Pokušajte ponovo!");
+            if(korisnickoIme.getText().isBlank() && lozinka.getText().isBlank()){
+                korisnickoIme.getStyleClass().removeAll("greska","zelenalight");
+                korisnickoIme.getStyleClass().add("greska");
+                lozinka.getStyleClass().removeAll("greska","zelenalight");
+                lozinka.getStyleClass().add("greska");
+
+            }
+            else if(korisnickoIme.getText().isBlank()){
+                korisnickoIme.getStyleClass().removeAll("greska","zelenalight");
+                korisnickoIme.getStyleClass().add("greska");
+                lozinka.getStyleClass().removeAll("greska","zelenalight");
+                lozinka.getStyleClass().add("zelenalight");
+            }
+            else{
+                lozinka.getStyleClass().removeAll("greska","zelenalight");
+                lozinka.getStyleClass().add("greska");
+                korisnickoIme.getStyleClass().removeAll("greska","zelenalight");
+                korisnickoIme.getStyleClass().add("zelenalight");
+            }
+
             alert.showAndWait();
         }
+
+
     }
 }
