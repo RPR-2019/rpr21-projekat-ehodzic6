@@ -1,0 +1,19 @@
+.greska{
+    -fx-background-color: lightpink;
+}
+.zelenalight{
+    -fx-accent: #4ef54e;
+    -fx-background-color: #4ef54e;
+}
+.zuta{
+    -fx-accent: #ecec38
+}
+.narandzasta{
+    -fx-accent: orange;
+}
+.crvena{
+    -fx-accent: red;
+}
+.zelena{
+    -fx-accent: green
+}

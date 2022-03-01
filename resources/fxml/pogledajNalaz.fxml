@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.input.KeyCodeCombination?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.PogledajNalazController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu text="_Options">
+                    <items>
+                        <MenuItem onAction="#logOut" text="_LogOut">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="L" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#exit" text="E_xit">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="X" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator></MenuItem>
+                    </items>
+                    <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </Menu>
+                <Menu text="_Help">
+                    <items>
+                        <MenuItem onAction="#about" text="A_bout">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="B" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator></MenuItem>
+                    </items>
+                    <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <bottom>
+        <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <buttons>
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#ok" text="Potvrdi" />
+            </buttons>
+            <BorderPane.margin>
+                <Insets right="20.0" />
+            </BorderPane.margin>
+        </ButtonBar>
+    </bottom>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="65.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="209.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="10.0" prefWidth="75.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="449.0" minWidth="10.0" prefWidth="386.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="41.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label fx:id="agr" text="Agresija:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="pir" text="Piromanija: " GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="dep" text="Depresija:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="ptsd" text="PTSD:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="siz" text="Šizofrenija:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="alk" text="Ovisnik o alkoholu:" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="sups" text="Korisnik psihoaktivnih supstanci:  " GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="psih" text="Psihopatija:" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lic" text="Sindrom podvojene ličnosti:" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="man" text="Osobine manipulacije:" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3">
+                    <children>
+                        <Label text="JMBG:">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <TextField fx:id="jmb" editable="false" />
+                    </children>
+                    <GridPane.margin>
+                        <Insets top="20.0" />
+                    </GridPane.margin>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.columnIndex="1">
+                    <children>
+                        <Label fx:id="ime">
+                            <font>
+                                <Font name="System Bold" size="25.0" />
+
+                            </font>
+                        </Label>
+
+                    </children>
+                    <GridPane.margin>
+                        <Insets top="20.0" />
+                    </GridPane.margin>
+                </HBox>
+            </children>
+        </GridPane>
+    </center>
+</BorderPane>

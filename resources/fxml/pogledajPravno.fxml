@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.PogledajPravnoLiceController">
+   <stylesheets>
+      <URL value="@/css/izgled.css" />
+   </stylesheets>
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="289.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.0" minWidth="10.0" prefWidth="311.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="202.0" minHeight="10.0" prefHeight="202.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="238.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="238.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Label prefHeight="15.0" prefWidth="250.0" text="Naziv pravnog lica:" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="30.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nazivPrati" maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="1">
+         <GridPane.margin>
+            <Insets right="30.0" />
+         </GridPane.margin>
+      </TextField>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <buttons>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#potvrdi" text="Uredu" />
+         </buttons>
+         <GridPane.margin>
+            <Insets right="30.0" />
+         </GridPane.margin>
+      </ButtonBar>
+      <Label fx:id="labelNaziv" prefHeight="15.0" prefWidth="129.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</GridPane>
