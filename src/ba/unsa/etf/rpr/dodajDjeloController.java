@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -49,6 +50,7 @@ public class dodajDjeloController implements Initializable {
             stage.setTitle("Dodaj osobu");
             stage.setScene(new Scene(root,1000,800));
             stage.setResizable(false);
+            stage.getIcons().add(new Image("/img/mupks.png"));
             stage.showAndWait();
             if(stage.getUserData()!=null) {
                 Osoba osoba = (Osoba) stage.getUserData();
@@ -74,6 +76,7 @@ public class dodajDjeloController implements Initializable {
             stage.setScene(new Scene(root,600,300));
             stage.setTitle("Dodaj pravno lice");
             stage.setResizable(false);
+            stage.getIcons().add(new Image("/img/mupks.png"));
             stage.showAndWait();
             if(stage.getUserData()!=null ){
                 PravnoLice pravnoLice = (PravnoLice) stage.getUserData();
@@ -236,6 +239,7 @@ public class dodajDjeloController implements Initializable {
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -244,6 +248,7 @@ public class dodajDjeloController implements Initializable {
         Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
         stage.setScene(new Scene(root,600,400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
         }
 }

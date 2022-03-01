@@ -140,6 +140,7 @@ public class dodajRekordController implements Initializable {
                 stage.setTitle("Kriminalni rekordi");
                 stage.setScene(new Scene(root, 1000, 800));
                 stage.setResizable(false);
+                stage.getIcons().add(new Image("/img/mupks.png"));
                 stage.show();
             }
         }
@@ -155,6 +156,7 @@ public class dodajRekordController implements Initializable {
         stage.setTitle("Kriminalni rekordi");
         stage.setScene(new Scene(root, 1000, 800));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -177,6 +179,7 @@ public class dodajRekordController implements Initializable {
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -185,6 +188,7 @@ public class dodajRekordController implements Initializable {
         Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
         stage.setScene(new Scene(root,600,400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 }

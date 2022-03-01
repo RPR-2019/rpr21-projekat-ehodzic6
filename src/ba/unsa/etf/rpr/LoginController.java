@@ -41,6 +41,7 @@ public class LoginController implements Initializable {
         stage.setTitle("Napravi račun");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
         korisnickoIme.setText("");
         lozinka.setText("");
@@ -97,12 +98,13 @@ public class LoginController implements Initializable {
                 stage.setTitle("Kriminalni rekordi");
                 stage.setScene(new Scene(root, 1000, 800));
                 stage.setResizable(false);
+                stage.getIcons().add(new Image("/img/mupks.png"));
                 stage.show();
             }
 
 
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -158,6 +160,7 @@ public class LoginController implements Initializable {
                     stage.setTitle("Kriminalni rekordi");
                     stage.setScene(new Scene(root, 1000, 800));
                     stage.setResizable(false);
+                    stage.getIcons().add(new Image("/img/mupks.png"));
                     stage.show();
                 }
 

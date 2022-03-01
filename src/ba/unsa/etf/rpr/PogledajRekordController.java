@@ -49,6 +49,7 @@ public class PogledajRekordController implements Initializable {
         stage.setTitle("Kriminalni rekordi");
         stage.setScene(new Scene(root, 1000, 800));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
 
     }
@@ -66,6 +67,7 @@ public class PogledajRekordController implements Initializable {
         stage.setTitle("Dodaj djelo");
         stage.setScene(new Scene(root, 1000, 800));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.showAndWait();
         RekordiDAO dao=new RekordiDAO();
         if(stage.getUserData()!=null) {
@@ -115,6 +117,7 @@ public class PogledajRekordController implements Initializable {
             stage.setScene(new Scene(root, 774, 553));
             stage.setTitle("Nalaz " + labelaIme.getText() + " " + labelaPrezime.getText());
             rekordiDAO.zatvoriKon();
+            stage.getIcons().add(new Image("/img/mupks.png"));
             stage.show();
         }
     }
@@ -140,8 +143,9 @@ public class PogledajRekordController implements Initializable {
             stage.setScene(new Scene(root, 774, 553));
             stage.setResizable(false);
             rekordiDAO.zatvoriKon();
-
+            stage.getIcons().add(new Image("/img/mupks.png"));
             stage.show();
+
         }
     dao.zatvoriKon();}
 
@@ -253,6 +257,7 @@ public class PogledajRekordController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root, 1000, 800));
             stage.setTitle("Djelo: " + kriminalnoDjelo.getJedinstveniKod());
+            stage.getIcons().add(new Image("/img/mupks.png"));
             stage.show();
         }
 
@@ -269,6 +274,7 @@ public class PogledajRekordController implements Initializable {
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -277,6 +283,7 @@ public class PogledajRekordController implements Initializable {
         Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
         stage.setScene(new Scene(root,600,400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 }

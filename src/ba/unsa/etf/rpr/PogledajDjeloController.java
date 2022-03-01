@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -113,6 +114,7 @@ public class PogledajDjeloController implements Initializable {
                 stage.setTitle(osoba.getIme() + " " + osoba.getPrezime());
                 stage.setScene(new Scene(root, 1000, 800));
                 stage.setResizable(false);
+                stage.getIcons().add(new Image("/img/mupks.png"));
                 stage.show();
             }
             catch(ClassCastException e){
@@ -124,6 +126,7 @@ public class PogledajDjeloController implements Initializable {
                 stage.setTitle(osteceniList.getSelectionModel().getSelectedItem().toString());
                 stage.setScene(new Scene(root, 600,300));
                 stage.setResizable(false);
+                stage.getIcons().add(new Image("/img/mupks.png"));
                 stage.show();
             }
         }
@@ -140,6 +143,7 @@ public class PogledajDjeloController implements Initializable {
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -148,6 +152,7 @@ public class PogledajDjeloController implements Initializable {
         Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
         stage.setScene(new Scene(root,600,400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 }

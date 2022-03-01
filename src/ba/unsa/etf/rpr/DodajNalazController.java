@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -139,6 +140,7 @@ public class DodajNalazController {
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -147,6 +149,7 @@ public class DodajNalazController {
         Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
         stage.setScene(new Scene(root,600,400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 }

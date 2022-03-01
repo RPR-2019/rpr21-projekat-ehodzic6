@@ -38,6 +38,7 @@ public class MainScreenController implements Initializable {
         stage.setTitle("Dodaj rekord");
         stage.setScene(new Scene(root, 1000, 800));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -51,6 +52,7 @@ public class MainScreenController implements Initializable {
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -93,6 +95,7 @@ public class MainScreenController implements Initializable {
             pogledajRekordController.setJmbgPrati(osoba.jmbg);
             stage.setScene(new Scene(root,1000,800));
             stage.setResizable(false);
+            stage.getIcons().add(new Image("/img/mupks.png"));
             stage.show();
 
 
@@ -115,6 +118,7 @@ public class MainScreenController implements Initializable {
         stage.setTitle("Prijava");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 
@@ -123,6 +127,7 @@ public class MainScreenController implements Initializable {
         Parent root=(new FXMLLoader(getClass().getResource("/fxml/about.fxml"))).load();
         stage.setScene(new Scene(root,600,400));
         stage.setResizable(false);
+        stage.getIcons().add(new Image("/img/mupks.png"));
         stage.show();
     }
 }
